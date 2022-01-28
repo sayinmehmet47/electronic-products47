@@ -1,10 +1,13 @@
+import CarouselComponent from "../components/Carousel";
+import { Navbar } from "../components/Navbar";
 import clientPromise from "../lib/mongodb";
 
 export default function Home({ isConnected }) {
   console.log(isConnected);
   return (
     <div className=" bg-slate-400">
-      <h1 className="">kfdsj</h1>
+      <Navbar />
+      <CarouselComponent />
     </div>
   );
 }

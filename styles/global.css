@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-prev {
+  left: 3% !important;
+  display: none;
+  z-index: 1;
+}
+.slick-next {
+  right: 3% !important;
+  z-index: 1;
+}
+/* .add4img {
+   display: inline-block; 
+  display: grid !important;
+} */
+.slick-next:before {
+  color: black !important;
+}
+.slick-prev:before {
+  color: black !important;
+}
