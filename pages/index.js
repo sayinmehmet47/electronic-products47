@@ -1,3 +1,4 @@
+import Cards from "../components/Cards";
 import CarouselComponent from "../components/Carousel";
 import { Navbar } from "../components/Navbar";
 import clientPromise from "../lib/mongodb";
@@ -5,9 +6,10 @@ import clientPromise from "../lib/mongodb";
 export default function Home({ isConnected }) {
   console.log(isConnected);
   return (
-    <div className=" bg-slate-400">
+    <div className="">
       <Navbar />
       <CarouselComponent />
+      <Cards />
     </div>
   );
 }

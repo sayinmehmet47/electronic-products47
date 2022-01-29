@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
 .slick-prev {
   left: 3% !important;
   display: none;
@@ -20,4 +25,12 @@
 }
 .slick-prev:before {
   color: black !important;
+}
+
+.slick-slide {
+  height: 400px;
+}
+
+.slick-slide img {
+  height: 400px;
 }

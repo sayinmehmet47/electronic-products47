@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+import { CgShoppingCart } from "react-icons/cg";
+
 export const Navbar = () => {
   const [active, setActive] = useState(false);
 
@@ -66,6 +68,17 @@ export const Navbar = () => {
                 Contact us
               </a>
             </Link>
+
+            <Link href="/">
+              <div className="text-white mx-3 flex">
+                <CgShoppingCart className="" style={{ fontSize: "30px" }} />
+                <span className="relative -top-2 left-1 bg-blue-400 px-2 pt-0.5 rounded-full">
+                  0
+                </span>
+              </div>
+            </Link>
+
+            {/* <h1>kdsjflak</h1> */}
           </div>
         </div>
       </nav>

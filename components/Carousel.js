@@ -32,24 +32,27 @@ export default function CarouselComponent() {
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <Slider {...settings} className="bg-gradient-to-r from-white to-slate-300 ">
-      <div className="adimg ad1img !grid">
-        <Image className="" width={900} height={470} src="/phone.jpg" alt="" />
+    <Slider {...settings} className="bg-gradient-to-r from-white to-slate-200 ">
+      <div className="adimg ad1img ">
+        <Image className="" width={1200} height={900} src="/phone.jpg" alt="" />
       </div>
-      <div className="adimg ad2img !grid">
-        <Image width={900} height={470} src="/devices.png" alt="" />
+      <div className="adimg ad2img ">
+        <Image width={1200} height={900} src="/smart-watch.jpg" alt="" />
       </div>
-      <div className="adimg ad3img !grid">
-        <Image width={900} height={470} src="/devices.png" alt="" />
+      <div className="adimg ad3img ">
+        <Image width={1200} height={900} src="/apple.jpg" alt="" />
       </div>
-      <div className="adimg ad4img !grid">
-        <Image width={900} height={470} src="/device.png" alt="" />
+      <div className="adimg ad4img ">
+        <Image width={1200} height={900} src="/device.png" alt="" />
+      </div>
+      <div className="adimg ad4img ">
+        <Image width={1200} height={900} src="/ipad.jpg" alt="" />
       </div>
     </Slider>
   );
