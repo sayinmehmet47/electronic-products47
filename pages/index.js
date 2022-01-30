@@ -1,34 +1,35 @@
+import axios from "axios";
 import Cards from "../components/Cards";
 import CarouselComponent from "../components/Carousel";
 import { Navbar } from "../components/Navbar";
-import clientPromise from "../lib/mongodb";
 
-export default function Home({ isConnected }) {
-  console.log(isConnected);
+export default function Home({ data }) {
+  console.log;
   return (
     <div className="">
       <Navbar />
       <CarouselComponent />
-      <Cards />
+      <Cards products={data} />
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
   try {
-    // client.db() will be the default database passed in the MONGODB_URI
-    // You can change the database by calling the client.db() function and specifying a database like:
-    // const db = client.db("myDatabase");
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
-    await clientPromise;
+    const result = await axios.get("http://localhost:3000/api/products");
+    const data = result.data;
     return {
-      props: { isConnected: true },
+      props: {
+        data: data,
+      },
     };
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.log(error);
     return {
-      props: { isConnected: false },
+      redirect: {
+        destination: "/login",
+        statusCode: 307,
+      },
     };
   }
 }
