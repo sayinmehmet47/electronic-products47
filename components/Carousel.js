@@ -30,7 +30,6 @@ function SamplePrevArrow(props) {
 
 export default function CarouselComponent() {
   var settings = {
-    dots: true,
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,

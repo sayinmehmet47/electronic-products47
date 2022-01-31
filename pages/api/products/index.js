@@ -2,7 +2,7 @@ import Product from "../../../models/Product";
 import dbConnect from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
-  const { method, cookies } = req;
+  const { method } = req;
   dbConnect();
   if (method === "GET") {
     try {

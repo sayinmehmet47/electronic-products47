@@ -1,35 +1,25 @@
-import axios from "axios";
 import Cards from "../components/Cards";
 import CarouselComponent from "../components/Carousel";
 import { Navbar } from "../components/Navbar";
+import dbConnect from "../lib/mongodb";
 
-export default function Home({ data }) {
-  console.log;
+export default function Home({ products }) {
+  console.log(products);
   return (
     <div className="">
       <Navbar />
       <CarouselComponent />
-      <Cards products={data} />
+      <Cards products={products} />
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
-  try {
-    const result = await axios.get("http://localhost:3000/api/products");
-    const data = result.data;
-    return {
-      props: {
-        data: data,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      redirect: {
-        destination: "/login",
-        statusCode: 307,
-      },
-    };
-  }
+export async function getServerSideProps() {
+  // Fetch data from external API
+  await dbConnect();
+  const res = await fetch(`http://localhost:3000/api/products`);
+  const data = await res.json();
+
+  // Pass data to the page via props
+  return { props: { products: data } };
 }

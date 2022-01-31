@@ -16,7 +16,7 @@ export default function Cards({ products }) {
         return (
           <div
             key={product._id}
-            className="shadow bg-red mt-5 mx-5 border text-center"
+            className="shadow bg-red mt-5 mx-5 border text-center rounded py-3 cursor-pointer"
             onClick={() => handleClick(product._id)}
           >
             {" "}
