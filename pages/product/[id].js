@@ -6,9 +6,23 @@ import dbConnect from "../../lib/mongodb";
 export default function Product({ product }) {
   const [price, setPrice] = useState(product.price[0]);
   const [color, setColor] = useState(0);
+  const [extras, setExtras] = useState([]);
   const handleColor = (selectedColor) => {
+    const difference = product.price[selectedColor] - product.price[color];
     setColor(selectedColor);
-    setPrice(product.price[selectedColor]);
+    setPrice(price + difference);
+  };
+
+  const handleExtraOptions = (e, option) => {
+    console.log(e.target.checked, option);
+
+    if (e.target.checked) {
+      setPrice(price + option.price);
+      setExtras((pre) => [...pre, option]);
+    } else {
+      setPrice(price - option.price);
+      setExtras(extras.filter((extra) => extra._id !== option._id));
+    }
   };
 
   return (
@@ -157,7 +171,7 @@ export default function Product({ product }) {
                   <h1 className="text-lg font-bold">
                     Further Guarantee Services
                   </h1>
-                  {product.extraOptions.map((e, i) => {
+                  {product.extraOptions.map((option, i) => {
                     return (
                       <div key={i}>
                         <div className="flex justify-between pt-2">
@@ -168,15 +182,16 @@ export default function Product({ product }) {
                               type="checkbox"
                               role="switch"
                               id="flexSwitchCheckDefault"
+                              onChange={(e) => handleExtraOptions(e, option)}
                             ></input>
                             <label
                               className="form-check-label inline-block text-gray-800"
                               htmlFor="flexSwitchCheckDefault"
                             >
-                              {e.desc}
+                              {option.desc}
                             </label>
                           </div>
-                          <span className="text-rose-500">{e.price}</span>
+                          <span className="text-rose-500">{option.price}</span>
                         </div>
                       </div>
                     );
@@ -187,8 +202,8 @@ export default function Product({ product }) {
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ${price}
                 </span>
-                <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                  Button
+                <button className="flex ml-auto text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded">
+                  Add to Card
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                   <svg
