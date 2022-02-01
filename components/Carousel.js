@@ -41,9 +41,7 @@ export default function CarouselComponent() {
       <div className="adimg ad1img ">
         <Image className="" width={1200} height={900} src="/phone.jpg" alt="" />
       </div>
-      <div className="adimg ad2img ">
-        <Image width={1200} height={900} src="/smart-watch.jpg" alt="" />
-      </div>
+
       <div className="adimg ad3img ">
         <Image width={1200} height={900} src="/apple.jpg" alt="" />
       </div>

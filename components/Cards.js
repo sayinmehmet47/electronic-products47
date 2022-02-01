@@ -36,7 +36,7 @@ export default function Cards({ products }) {
                 <RiStarSFill className="text-violet-700" />{" "}
               </div>{" "}
               <div className="text-left">
-                <h2>{product.price}</h2>{" "}
+                <h2>{product.price[0]}</h2>{" "}
               </div>{" "}
             </div>{" "}
           </div>
