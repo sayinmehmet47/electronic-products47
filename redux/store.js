@@ -3,7 +3,7 @@ import cartSlice from "./cartSlice";
 
 export function makeStore() {
   return configureStore({
-    reducer: { counter: cartSlice },
+    reducer: { cart: cartSlice },
   });
 }
 

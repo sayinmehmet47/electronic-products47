@@ -3,9 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { CgShoppingCart } from "react-icons/cg";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
+  const quantity = useSelector((state) => state.cart.quantity);
 
   const handleClick = () => {
     setActive(!active);
@@ -69,14 +71,16 @@ export const Navbar = () => {
               </a>
             </Link>
 
-            <Link href="/">
-              <div className="text-white mx-3 flex">
-                <CgShoppingCart className="" style={{ fontSize: "30px" }} />
-                <span className="relative -top-2 left-1 bg-blue-400 px-2 pt-0.5 rounded-full">
-                  0
-                </span>
-              </div>
-            </Link>
+            <div className="text-white mx-3 flex">
+              <Link href="/card">
+                <a>
+                  <CgShoppingCart className="" style={{ fontSize: "30px" }} />
+                </a>
+              </Link>
+              <span className="relative -top-2 left-1 bg-blue-400 px-2 pt-0.5 rounded-full">
+                {quantity}
+              </span>
+            </div>
 
             {/* <h1>kdsjflak</h1> */}
           </div>

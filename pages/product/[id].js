@@ -1,12 +1,18 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch } from "react-redux";
 import { Navbar } from "../../components/Navbar";
 import dbConnect from "../../lib/mongodb";
+import { addProduct } from "../../redux/cartSlice";
 
 export default function Product({ product }) {
   const [price, setPrice] = useState(product.price[0]);
+  const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(0);
   const [extras, setExtras] = useState([]);
+  const alert = useAlert();
+  const dispatch = useDispatch();
   const handleColor = (selectedColor) => {
     const difference = product.price[selectedColor] - product.price[color];
     setColor(selectedColor);
@@ -23,6 +29,11 @@ export default function Product({ product }) {
       setPrice(price - option.price);
       setExtras(extras.filter((extra) => extra._id !== option._id));
     }
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, extras, price, quantity }));
+    alert.show("Product ADDED!");
   };
 
   return (
@@ -197,12 +208,47 @@ export default function Product({ product }) {
                     );
                   })}
                 </div>
+
+                <div className="flex w-2/4 mt-2 align-middle justify-center">
+                  <label
+                    htmlFor="exampleNumber0"
+                    className="form-label inline-block  text-gray-700 mt-1"
+                  >
+                    Quantity
+                  </label>
+                  <input
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    type="number"
+                    className="
+        form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        mx-2
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+      "
+                    id="exampleNumber0"
+                    placeholder="Quantity"
+                  />
+                </div>
               </div>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
                   ${price}
                 </span>
-                <button className="flex ml-auto text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded">
+                <button
+                  onClick={handleClick}
+                  className="flex ml-auto text-white bg-green-700 border-0 py-2 px-6 focus:outline-none hover:bg-green-500 rounded"
+                >
                   Add to Card
                 </button>
                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
