@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
       state.total += action.payload.price * action.payload.quantity;
     },
     reset: (state) => {
-      // state.value -= 1;
+      (state.products = []), (state.quantity = 0), (state.total = 0);
     },
     // Use the PayloadAction type to declare the contents of `action.payload`
   },

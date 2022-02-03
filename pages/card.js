@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 
 import { Navbar } from "../components/Navbar";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { reset } from "../redux/cartSlice";
+import Paypal from "./payment/Paypal";
 
 export default function Card() {
   const currency = "EUR";
   const cart = useSelector((state) => state.cart);
   const { products } = cart;
+  const total = cart.total;
 
   const [isPaypalOpen, setIsPaypalOpen] = useState(false);
   return (
@@ -106,36 +109,7 @@ export default function Card() {
 
           <div className="mt-4 text-center">
             {isPaypalOpen ? (
-              <PayPalScriptProvider
-                options={{
-                  "client-id":
-                    "AcB7VTnm1iegQZwkJmkdwNkZAv07RAvyYckzu5Dmp1xDMkZBL_T4Am8FRjQzoqrfSd5o07dsBfTTeUNf",
-                  components: "buttons",
-                  currency: "EUR",
-                  "disable-funding": "credit,card,p24",
-                }}
-              >
-                <PayPalButtons
-                  createOrder={(data, actions) => {
-                    return actions.order.create({
-                      purchase_units: [
-                        {
-                          amount: {
-                            currency_code: currency,
-                            value: "200",
-                          },
-                        },
-                      ],
-                    });
-                  }}
-                  onApprove={(data, actions) => {
-                    return actions.order.capture().then((details) => {
-                      const name = details.payer.name.given_name;
-                      alert(`Transaction completed by ${name}`);
-                    });
-                  }}
-                />
-              </PayPalScriptProvider>
+              <Paypal />
             ) : (
               <button
                 onClick={() => setIsPaypalOpen(true)}
