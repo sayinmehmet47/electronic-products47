@@ -1,12 +1,17 @@
 import Image from "next/image";
 import React from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+
 import { Navbar } from "../components/Navbar";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function Card() {
+  const currency = "EUR";
   const cart = useSelector((state) => state.cart);
   const { products } = cart;
-  console.log(cart);
+
+  const [isPaypalOpen, setIsPaypalOpen] = useState(false);
   return (
     <>
       <Navbar />
@@ -98,20 +103,55 @@ export default function Card() {
               </div>
             </div>
           </div>
-          <div className="mt-4">
-            <button
-              className="
-            w-full
-            py-2
-            text-center text-white
-            bg-blue-500
-            rounded-md
-            shadow
-            hover:bg-blue-600
-          "
-            >
-              Proceed to Checkout
-            </button>
+
+          <div className="mt-4 text-center">
+            {isPaypalOpen ? (
+              <PayPalScriptProvider
+                options={{
+                  "client-id":
+                    "AcB7VTnm1iegQZwkJmkdwNkZAv07RAvyYckzu5Dmp1xDMkZBL_T4Am8FRjQzoqrfSd5o07dsBfTTeUNf",
+                  components: "buttons",
+                  currency: "EUR",
+                  "disable-funding": "credit,card,p24",
+                }}
+              >
+                <PayPalButtons
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            currency_code: currency,
+                            value: "200",
+                          },
+                        },
+                      ],
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order.capture().then((details) => {
+                      const name = details.payer.name.given_name;
+                      alert(`Transaction completed by ${name}`);
+                    });
+                  }}
+                />
+              </PayPalScriptProvider>
+            ) : (
+              <button
+                onClick={() => setIsPaypalOpen(true)}
+                className="
+          w-full
+          py-2
+          text-center text-white
+          bg-blue-500
+          rounded-md
+          shadow
+          hover:bg-blue-600
+        "
+              >
+                Proceed to Checkout
+              </button>
+            )}
           </div>
         </div>
       </div>

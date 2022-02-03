@@ -5,7 +5,6 @@ import dbConnect from "../lib/mongodb";
 // import "tw-elements";
 
 export default function Home({ products }) {
-  console.log(products);
   return (
     <div className="">
       <Navbar />

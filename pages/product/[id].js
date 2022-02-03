@@ -20,7 +20,6 @@ export default function Product({ product }) {
   };
 
   const handleExtraOptions = (e, option) => {
-    console.log(e.target.checked, option);
 
     if (e.target.checked) {
       setPrice(price + option.price);
