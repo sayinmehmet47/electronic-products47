@@ -8,17 +8,22 @@ import { useRouter } from "next/router";
 export default function Paypal() {
   const dispatch = useDispatch();
   const currency = "EUR";
+  // @ts-ignore
   const cart = useSelector((state) => state.cart);
   const router = useRouter();
   const { products } = cart;
   const total = cart.total;
+
+  //   sb-tyykg12977194@personal.example.com
+
+  // 2|<6Bt;x
 
   const createOrder = async (data) => {
     try {
       const res = await axios.post("http://localhost:3000/api/orders", data);
       if (res.status === 201) {
         dispatch(reset());
-        // router.push(`/orders/${res.data._id}`)
+        router.push(`/orders/${res.data._id}`);
       }
     } catch (error) {
       console.log(error);
@@ -50,7 +55,7 @@ export default function Paypal() {
           }}
           onApprove={(data, actions) => {
             return actions.order.capture().then((details) => {
-              console.log(details);
+              const { status } = details;
               const shipping = details.purchase_units[0].shipping;
               createOrder({
                 customer: shipping.name.full_name,
