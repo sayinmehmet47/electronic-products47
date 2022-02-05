@@ -1,19 +1,16 @@
 import Image from "next/image";
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import { Navbar } from "../components/Navbar";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { reset } from "../redux/cartSlice";
+import { removeSelected } from "../redux/cartSlice";
 import Paypal from "./payment/Paypal";
 
 export default function Card() {
-  const currency = "EUR";
+  // @ts-ignore
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const { products } = cart;
-  const total = cart.total;
-
   const [isPaypalOpen, setIsPaypalOpen] = useState(false);
   return (
     <>
@@ -36,6 +33,9 @@ export default function Card() {
                 <th className="px-6 py-3 font-bold whitespace-nowrap">Qty</th>
                 <th className="px-6 py-3 font-bold whitespace-nowrap">
                   Extras
+                </th>
+                <th className="px-6 py-3 font-bold whitespace-nowrap">
+                  Remove
                 </th>
               </tr>
             </thead>
@@ -69,6 +69,14 @@ export default function Card() {
                         <span>{extra.desc}</span>
                       ))}
                     </td>
+                    <td className="p-4 px-6  text-center md:text-base text-sm">
+                      <span
+                        className="cursor-pointer"
+                        onClick={() => dispatch(removeSelected(product))}
+                      >
+                        ❌
+                      </span>
+                    </td>
                   </tr>
                 );
               })}
@@ -80,15 +88,19 @@ export default function Card() {
               <h3 className="text-xl font-bold text-blue-600">Order Summary</h3>
               <div className="flex justify-between px-4">
                 <span className="font-bold">Subtotal</span>
-                <span className="font-bold">$35.25</span>
+                <span className="font-bold">€{cart.total}</span>
               </div>
               <div className="flex justify-between px-4">
                 <span className="font-bold">Discount</span>
-                <span className="font-bold text-red-600">- $5.00</span>
+                <span className="font-bold text-red-600">
+                  {cart.total > 0 ? "- €5.00" : "€0"}
+                </span>
               </div>
               <div className="flex justify-between px-4">
                 <span className="font-bold">Sales Tax</span>
-                <span className="font-bold">$2.25</span>
+                <span className="font-bold">
+                  {cart.total > 0 ? "€2.25" : "€0"}
+                </span>
               </div>
               <div
                 className="
@@ -102,7 +114,9 @@ export default function Card() {
             "
               >
                 <span className="text-xl font-bold">Total</span>
-                <span className="text-2xl font-bold">${cart.total}</span>
+                <span className="text-2xl font-bold">
+                  €{cart.total > 0 ? cart.total - 5 + 2.25 : 0}
+                </span>
               </div>
             </div>
           </div>

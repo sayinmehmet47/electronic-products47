@@ -11,8 +11,7 @@ export default function Paypal() {
   // @ts-ignore
   const cart = useSelector((state) => state.cart);
   const router = useRouter();
-  const { products } = cart;
-  const total = cart.total;
+  const { products, total } = cart;
 
   //   sb-tyykg12977194@personal.example.com
 
@@ -22,6 +21,7 @@ export default function Paypal() {
     try {
       const res = await axios.post("http://localhost:3000/api/orders", data);
       if (res.status === 201) {
+        console.log(data);
         dispatch(reset());
         router.push(`/orders/${res.data._id}`);
       }
@@ -47,7 +47,7 @@ export default function Paypal() {
                 {
                   amount: {
                     currency_code: currency,
-                    value: total,
+                    value: total + (-5 + 2.5),
                   },
                 },
               ],
