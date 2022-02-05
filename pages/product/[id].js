@@ -20,7 +20,6 @@ export default function Product({ product }) {
   };
 
   const handleExtraOptions = (e, option) => {
-
     if (e.target.checked) {
       setPrice(price + option.price);
       setExtras((pre) => [...pre, option]);
@@ -41,13 +40,15 @@ export default function Product({ product }) {
       <section className="text-gray-700 body-font overflow-hidden bg-white">
         <div className="container px-5 py-24 mx-auto">
           <div className="lg:w-5/5 mx-auto flex flex-wrap">
-            <Image
-              alt="ecommerce"
-              width={620}
-              height={400}
-              className="  rounded border border-gray-200"
-              src={product.image}
-            />
+            <div className="w-96">
+              <Image
+                alt="ecommerce"
+                width={620}
+                height={400}
+                className="  rounded border border-gray-200"
+                src={product.image}
+              />
+            </div>
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 BRAND NAME
@@ -242,7 +243,7 @@ export default function Product({ product }) {
               </div>
               <div className="flex">
                 <span className="title-font font-medium text-2xl text-gray-900">
-                  ${price}
+                  €{price}
                 </span>
                 <button
                   onClick={handleClick}

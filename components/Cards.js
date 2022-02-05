@@ -22,8 +22,8 @@ export default function Cards({ products }) {
             {" "}
             <Image
               src={product.image}
-              width={200}
-              height={200}
+              width={100}
+              height={100}
               className=""
             />{" "}
             <div className="ml-2">
@@ -36,7 +36,7 @@ export default function Cards({ products }) {
                 <RiStarSFill className="text-violet-700" />{" "}
               </div>{" "}
               <div className="text-left">
-                <h2>{product.price[0]}</h2>{" "}
+                <h2>€{product.price[0]}</h2>{" "}
               </div>{" "}
             </div>{" "}
           </div>

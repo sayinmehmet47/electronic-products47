@@ -1,11 +1,12 @@
 import React from "react";
 import dbConnect from "../../lib/mongodb";
-import { MdPayment } from "react-icons/md";
 import Timeline from "../../components/Timeline";
+import { Navbar } from "../../components/Navbar";
 export default function Order({ order }) {
   console.log(order.customer);
   return (
     <div className="">
+      <Navbar />
       <h1 className="text-4xl text-center font-semibold mb-6">
         Package status
       </h1>
