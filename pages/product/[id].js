@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
 import { Navbar } from "../../components/Navbar";
 import dbConnect from "../../lib/mongodb";
+import Products from "../../models/Products";
 import { addProduct } from "../../redux/cartSlice";
 
 export default function Product({ product }) {
@@ -273,12 +274,12 @@ export default function Product({ product }) {
 }
 
 export async function getServerSideProps({ params }) {
-  let dev = process.env.NODE_ENV !== "production";
-  let { DEV_URL, PROD_URL } = process.env;
+  const { id } = params;
   await dbConnect();
-  const res = await fetch(
-    `${dev ? DEV_URL : PROD_URL}/api/products/${params.id}`
-  );
-  const data = await res.json();
-  return { props: { product: data } };
+  const product = await Products.findById(id);
+  return {
+    props: {
+      product: JSON.parse(JSON.stringify(product)),
+    },
+  };
 }
