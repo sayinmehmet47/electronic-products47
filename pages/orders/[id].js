@@ -45,8 +45,12 @@ export default function Order({ order }) {
 }
 
 export async function getServerSideProps({ params }) {
+  let dev = process.env.NODE_ENV !== "production";
+  let { DEV_URL, PROD_URL } = process.env;
   await dbConnect();
-  const res = await fetch(`http://localhost:3000/api/orders/${params.id}`);
+  const res = await fetch(
+    `${dev ? DEV_URL : PROD_URL}/api/orders/${params.id}`
+  );
   console.log(res);
   const data = await res.json();
   return { props: { order: data } };

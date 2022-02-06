@@ -273,8 +273,10 @@ export default function Product({ product }) {
 }
 
 export async function getServerSideProps({ params }) {
+  let dev = process.env.NODE_ENV !== "production";
+  let { DEV_URL, PROD_URL } = process.env;
   await dbConnect();
-  const res = await fetch(`http://localhost:3000/api/products/${params.id}`);
+  const res = await fetch(`${dev ? DEV_URL : PROD_URL}/products/${params.id}`);
   const data = await res.json();
   return { props: { product: data } };
 }
