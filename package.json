@@ -13,6 +13,7 @@
     "mongoose": "^6.1.8",
     "next": "latest",
     "react": "^17.0.2",
+    "react-admin": "^3.19.7",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
     "react-chrono": "^1.13.2",
