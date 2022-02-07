@@ -9947,6 +9947,15 @@ prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.0, 
     object-assign "^4.1.1"
     react-is "^16.13.1"
 
+prop-types@^15.8.1:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
+
 proxy-addr@~2.0.7:
   version "2.0.7"
   resolved "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz"
@@ -10094,6 +10103,14 @@ ra-core@^3.19.7:
     prop-types "^15.6.1"
     query-string "^5.1.1"
     reselect "~3.0.0"
+
+ra-data-json-server@^3.19.7:
+  version "3.19.7"
+  resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.19.7.tgz#fcb7996e5fc8e4b3a741b573979982bd0b50c855"
+  integrity sha512-yecPHhJNRLppbwjjyt6kWuhkN5yX7dsAthyon9ZzXSd9mGgmdp1DxYLkIVMe659/tlJjf1h8q7SBmaV2A0mnjA==
+  dependencies:
+    query-string "^5.1.1"
+    ra-core "^3.19.7"
 
 ra-i18n-polyglot@^3.19.7:
   version "3.19.7"

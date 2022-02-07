@@ -3,7 +3,6 @@ import CarouselComponent from "../components/Carousel";
 import { Navbar } from "../components/Navbar";
 import dbConnect from "../lib/mongodb";
 import Products from "../models/Products";
-// import "tw-elements";
 
 export default function Home({ products }) {
   console.log(products);
