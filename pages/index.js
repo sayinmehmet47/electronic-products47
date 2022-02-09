@@ -20,7 +20,6 @@ export async function getServerSideProps() {
   await dbConnect();
   const data = await Products.find().lean();
 
-  // Pass data to the page via props
   return {
     props: {
       products: JSON.parse(JSON.stringify(data)),

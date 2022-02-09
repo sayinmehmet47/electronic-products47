@@ -1,5 +1,5 @@
 import dbConnect from "../../../lib/mongodb";
-import Order from "../../../models/Order";
+import Orders from "../../../models/Orders";
 
 export default async function handler(req, res) {
   const {
@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const order = await Order.findById(id);
+      const order = await Orders.findById(id);
       res.status(200).json(order);
     } catch (error) {
       res.status(500).json(error);
