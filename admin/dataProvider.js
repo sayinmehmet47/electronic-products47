@@ -1,6 +1,5 @@
 import { fetchUtils } from 'react-admin';
 
-const apiUrl="http://localhost:3000/api"
 import { stringify } from 'query-string';
 const httpClient = fetchUtils.fetchJson;
 
@@ -11,7 +10,7 @@ const dataProvider = {
         const query = {
             range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
         };
-        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+        const url = `api/${resource}?${stringify(query)}`;
 
         console.log("dsd",resource)
         return httpClient(url).then(({ headers, json }) => ({

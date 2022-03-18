@@ -11,7 +11,6 @@ import {
 } from "react-admin";
 
 export const ProductsList = (props) => {
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
     <List title="All users" {...props}>
