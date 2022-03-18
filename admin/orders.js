@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useMediaQuery } from "@material-ui/core";
+import { SelectInput } from "react-admin";
+
 import {
   SimpleList,
   List,
@@ -10,18 +12,12 @@ import {
   ImageField,
 } from "react-admin";
 
-export const ProductsList = (props) => {
-  const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-
+export const OrdersList = (props) => {
   return (
     <List title="All users" {...props}>
-  
-        <Datagrid>
-          <TextField source="title" />
-          <ImageField source="image" title="title" />
-
-        </Datagrid>
-  
+      <Datagrid>
+        <TextField source="customer" />
+      </Datagrid>
     </List>
   );
 };

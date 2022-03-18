@@ -1,29 +1,25 @@
-import {
-  CREATE,
-  DELETE,
-  GET_LIST,
-  GET_MANY_REFERENCE,
-  GET_ONE,
-  UPDATE,
-} from "react-admin";
+import { fetchUtils } from 'react-admin';
 
-const convertHTTPResponseToREST = (response, type, resource, params) => {
-  const { headers, json } = response;
-  switch (type) {
-    case GET_LIST:
-      return {
-        data: json.map((resource) => ({ ...resource, id: resource._id })),
-        total: parseInt(headers.get("content-range").split("/").pop(), 10),
-      };
-    case UPDATE:
-    case DELETE:
-    case GET_ONE:
-      return { ...json, id: json._id };
-    case CREATE:
-      return { ...params.data, id: json._id };
-    default:
-      return json;
-  }
+const apiUrl="http://localhost:3000/api"
+import { stringify } from 'query-string';
+const httpClient = fetchUtils.fetchJson;
+
+
+const dataProvider = {
+    getList: (resource, params) => {
+        const { page, perPage } = params.pagination;
+        const query = {
+            range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
+        };
+        const url = `${apiUrl}/${resource}?${stringify(query)}`;
+
+        console.log("dsd",resource)
+        return httpClient(url).then(({ headers, json }) => ({
+           data: json.map(resource => ({ ...resource, id: resource._id }) ),
+            total: parseInt(headers.get('content-range').split('/').pop(), 10),
+        }));
+    },
+
 };
 
-export default convertHTTPResponseToREST;
+export default dataProvider
