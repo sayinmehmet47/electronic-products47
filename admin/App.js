@@ -5,7 +5,6 @@ import { createHashHistory } from 'history';
 import { Admin, Resource} from 'react-admin';
 import UserIcon from '@material-ui/icons/Group';
 import createAdminStore from './createAdminStore';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { ProductsList } from "./products";
 import dataProvider from "./dataProvider";
 import { OrdersList } from "./orders";
@@ -32,7 +31,7 @@ const App = () => (
             title="My Admin"
         >
            <Resource name="products" icon={UserIcon} list={ProductsList} />
-           <Resource name="orders" icon={LocalShippingIcon} list={OrdersList} />
+           <Resource name="orders" icon={UserIcon} list={OrdersList} />
 
         </Admin>
     </Provider>
