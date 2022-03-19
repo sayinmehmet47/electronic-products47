@@ -9,7 +9,7 @@ const dataProvider = {
     const query = {
       range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
     };
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/${resource}?${stringify(
+    const url = `/api/${resource}?${stringify(
       query
     )}`;
     return httpClient(url).then(({ headers, json }) => ({
