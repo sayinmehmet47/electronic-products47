@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect } from "react";
 import Cards from "../components/Cards";
 import CarouselComponent from "../components/Carousel";
 import { Navbar } from "../components/Navbar";
@@ -5,7 +7,6 @@ import dbConnect from "../lib/mongodb";
 import Products from "../models/Products";
 
 export default function Home({ products }) {
-  console.log(products);
   return (
     <div className="">
       <Navbar />

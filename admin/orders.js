@@ -1,6 +1,4 @@
 import * as React from "react";
-import { useMediaQuery } from "@material-ui/core";
-import { SelectInput } from "react-admin";
 
 import {
   SimpleList,
@@ -14,7 +12,7 @@ import {
 
 export const OrdersList = (props) => {
   return (
-    <List title="All users" {...props}>
+    <List {...props}>
       <Datagrid>
         <TextField source="customer" />
       </Datagrid>

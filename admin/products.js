@@ -13,11 +13,11 @@ import {
 export const ProductsList = (props) => {
 
   return (
-    <List title="All users" {...props}>
+    <List  {...props}>
   
         <Datagrid>
           <TextField source="title" />
-          <ImageField source="image" title="title" />
+          <ImageField source="image"  />
 
         </Datagrid>
   
