@@ -8,7 +8,7 @@ import createAdminStore from './createAdminStore';
 import { ProductsList } from "./products";
 import dataProvider from "./dataProvider";
 import { OrdersList } from "./orders";
-
+import { GrDeliver } from "react-icons/gr";
 // dependency injection
 const authProvider = () => Promise.resolve();
 
@@ -31,7 +31,7 @@ const App = () => (
             title="My Admin"
         >
            <Resource name="products" icon={UserIcon} list={ProductsList} />
-           <Resource name="orders" icon={UserIcon} list={OrdersList} />
+           <Resource name="orders" icon={GrDeliver} list={OrdersList} />
 
         </Admin>
     </Provider>
