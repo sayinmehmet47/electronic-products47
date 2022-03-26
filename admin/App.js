@@ -10,6 +10,7 @@ import { ProductsList } from "./products";
 import dataProvider from "./dataProvider";
 import { OrdersList } from "./orders";
 import axios from "axios";
+import { PostCreate } from "./post";
 // dependency injection
 const authProvider = () => Promise.resolve();
 
@@ -35,8 +36,9 @@ return (  <Provider
       history={history}
       title="My Admin"
     >
-      <Resource name="products" icon={UserIcon} list={ProductsList} />
+      <Resource name="products" create={PostCreate}  icon={UserIcon} list={ProductsList} />
       <Resource name="orders" icon={Send} list={OrdersList} />
+
     </Admin>
   </Provider>)
 }
