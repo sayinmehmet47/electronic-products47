@@ -26,7 +26,7 @@ export default function Cards({ products }) {
               height={100}
               className=""
             />{" "}
-            <div className="ml-2">
+            <div className="ml-20 mt-3">
               {" "}
               <h1 className="text-left">{product.title}</h1>{" "}
               <div className="flex">
