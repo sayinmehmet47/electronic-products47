@@ -14,5 +14,5 @@
  - [x] Paypal 
 
 
- 
+ <img width="1440" alt="Screenshot 2022-04-03 at 14 01 38" src="https://user-images.githubusercontent.com/75525090/161427145-a801685a-cf23-4d13-a875-324c49065fcb.png">
 
