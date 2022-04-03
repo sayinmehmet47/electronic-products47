@@ -65,7 +65,7 @@ export default function Card() {
                       {product.quantity}
                     </td>
                     <td className="p-4 px-6  text-center md:text-base text-sm">
-                      {product.extraOptions.map((extra) => (
+                      {product.extras.map((extra) => (
                         <span>{extra.desc}</span>
                       ))}
                     </td>

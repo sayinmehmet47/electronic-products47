@@ -1,10 +1,6 @@
 import dbConnect from '../../../lib/mongodb';
 import Products from '../../../models/Products';
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 68dc4e7605da558fa502f2e21d6cb3823cc669b6
 export async function getData() {
   const products = await Products.find();
   return products;
@@ -47,5 +43,7 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(500).json(err);
     }
+
   }
+
 }

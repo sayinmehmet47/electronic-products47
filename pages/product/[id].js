@@ -1,12 +1,12 @@
-import axios from 'axios';
-import Image from 'next/image';
-import React, { useState } from 'react';
-import { useAlert } from 'react-alert';
-import { useDispatch } from 'react-redux';
-import { Navbar } from '../../components/Navbar';
-import dbConnect from '../../lib/mongodb';
-import Products from '../../models/Products';
-import { addProduct } from '../../redux/cartSlice';
+import axios from "axios";
+import Image from "next/image";
+import React, { useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch } from "react-redux";
+import { Navbar } from "../../components/Navbar";
+import dbConnect from "../../lib/mongodb";
+import Products from "../../models/Products";
+import { addProduct } from "../../redux/cartSlice";
 
 export default function Product({ product }) {
   const [price, setPrice] = useState(product.price[0]);
@@ -16,9 +16,13 @@ export default function Product({ product }) {
   const alert = useAlert();
   const dispatch = useDispatch();
   const handleColor = (selectedColor) => {
-    const difference = product.price[selectedColor] - product.price[color];
-    setColor(selectedColor);
-    setPrice(price + difference);
+    if (product.price[1] === undefined) {
+      setPrice(product.price[0]);
+    } else {
+      const difference = product.price[selectedColor] - product.price[color];
+      setColor(selectedColor);
+      setPrice(price + difference);
+    }
   };
 
   const handleExtraOptions = (e, option) => {
@@ -33,7 +37,7 @@ export default function Product({ product }) {
 
   const handleClick = () => {
     dispatch(addProduct({ ...product, extras, price, quantity }));
-    alert.show('Product ADDED!');
+    alert.show("Product ADDED!");
   };
 
   return (

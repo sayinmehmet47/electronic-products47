@@ -32,6 +32,7 @@ const dataProvider = {
         method: 'POST',
         body: JSON.stringify({
           title: params.data.title,
+          description: params.data.description,
           price: params.data.price,
           image: uploadRes.data.url,
         }),
@@ -55,42 +56,10 @@ const dataProvider = {
       method: 'DELETE',
       body: JSON.stringify(params.ids),
     }).then(({ json }) => ({
-      data: json.map((resource) => ({ ...resource, id: resource._id })),
+      data: [json].map((resource) => ({ ...resource, id: resource._id })),
     }));
   },
-  create: (resource, params) => {
-    // const data = new FormData();
-    // data.append("file", params.data.pictures);
-    // data.append("upload_preset", "uploads");
-
-    // try {
-    //   const uploadRes = await axios.post(
-    //     "https://api.cloudinary.com/v1_1/dsbyq4sj1/image/upload",
-    //     data
-    //   );
-
-    //   const { url } = uploadRes.data;
-    //   const newProduct = {
-    //     title,
-    //     desc,
-    //     prices,
-    //     extraOptions,
-    //     img: url,
-    //   };
-
-    //   await axios.post("http://localhost:3000/api/products", newProduct);
-    //   setClose(true);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-
-    return httpClient(`api/${resource}`, {
-      method: "POST",
-      body: JSON.stringify(params.data),
-    }).then(({json})=>({
-       data: { ...params.data, id: json.id }
-    }));
-  },
+ 
 };
 
 export default dataProvider;
