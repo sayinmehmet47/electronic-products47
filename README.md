@@ -1,4 +1,4 @@
-# Stock Portfolio Project
+# Electronik Product e-Commerce Page Project
 
 - This project is example of e-commerce website.
 - Users can choose a product, add it to favorites,and buy the product. Also ADMIN can add or delete  products a by the help of admin panel.
