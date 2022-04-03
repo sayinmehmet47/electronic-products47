@@ -33,6 +33,7 @@ const dataProvider = {
         body: JSON.stringify({
           title: params.data.title,
           description: params.data.description,
+          extraOptions: params.data.extraOptions,
           price: params.data.price,
           image: uploadRes.data.url,
         }),
