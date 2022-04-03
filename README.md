@@ -10,6 +10,7 @@
  - [x] Tailwind,Material UI
  - [x] React-Admin
  - [x] MongoDB
+ - [x] Cloudinary Media Library 
 
  
 
