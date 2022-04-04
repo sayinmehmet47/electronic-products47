@@ -27,14 +27,14 @@ const dataProvider = {
         'https://api.cloudinary.com/v1_1/dsequsn4l/image/upload',
         data
       );
-      console.log(uploadRes.data.url);
+      
       return httpClient(`api/${resource}`, {
         method: 'POST',
         body: JSON.stringify({
           title: params.data.title,
           description: params.data.description,
-          extraOptions: params.data.extraOptions,
           price: params.data.price,
+          extraOptions: params.data.extraOptions,
           image: uploadRes.data.url,
         }),
       }).then(({ json }) => ({
