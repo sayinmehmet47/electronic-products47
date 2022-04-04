@@ -29,3 +29,6 @@ https://electronic-products47.vercel.app/admin
 
 <img width="1440" alt="Screenshot 2022-04-03 at 14 07 04" src="https://user-images.githubusercontent.com/75525090/161427331-ca285d26-e2c9-4276-ba79-b4ae039f5ee7.png">
 
+ORDER PAGE
+
+![image](https://user-images.githubusercontent.com/75525090/161621331-3e867e3e-cf42-4566-8895-9c33056bbaab.png)
