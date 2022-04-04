@@ -15,6 +15,8 @@ export const OrdersList = (props) => {
     <List {...props}>
       <Datagrid>
         <TextField source="customer" />
+        <TextField source="total" />
+        <TextField source="address" />
       </Datagrid>
     </List>
   );
