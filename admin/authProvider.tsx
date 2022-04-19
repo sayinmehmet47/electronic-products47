@@ -1,5 +1,5 @@
 const authProvider = {
-    // authentication
+    
     login: ({ username }) => {
       localStorage.setItem('username', username);
       // accept all username/password combinations

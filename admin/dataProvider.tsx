@@ -1,10 +1,10 @@
-import { fetchUtils } from 'react-admin';
+import { DataProvider, fetchUtils } from 'react-admin';
 import { useState } from 'react';
 import { stringify } from 'query-string';
 import axios from 'axios';
 const httpClient = fetchUtils.fetchJson;
 
-const dataProvider = {
+ const dataProvider = {
   getList: (resource, params) => {
     const { page, perPage } = params.pagination;
     const query = {
@@ -61,6 +61,6 @@ const dataProvider = {
     }));
   },
  
-};
+} as DataProvider;
 
 export default dataProvider;
