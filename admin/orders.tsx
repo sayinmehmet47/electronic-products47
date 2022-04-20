@@ -10,9 +10,11 @@ import {
   ImageField,
 } from "react-admin";
 
-export const OrdersList = (props) => {
+
+
+export const OrdersList = () => {
   return (
-    <List {...props}>
+    <List >
       <Datagrid>
         <TextField source="customer" />
         <TextField source="total" />

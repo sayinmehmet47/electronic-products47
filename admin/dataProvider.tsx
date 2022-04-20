@@ -4,6 +4,8 @@ import { stringify } from 'query-string';
 import axios from 'axios';
 const httpClient = fetchUtils.fetchJson;
 
+
+
  const dataProvider = {
   getList: (resource, params) => {
     const { page, perPage } = params.pagination;
@@ -12,8 +14,8 @@ const httpClient = fetchUtils.fetchJson;
     };
     const url = `/api/${resource}?${stringify(query)}`;
     return httpClient(url).then(({ headers, json }) => ({
-      data: json.map((resource) => ({ ...resource, id: resource._id })),
-      total: parseInt(headers.get('content-range').split('/').pop(), 10),
+      data: json.map((resource: { _id: any; }) => ({ ...resource, id: resource._id })),
+      total: parseInt(headers.get('content-range')!.split('/').pop()!, 10),
     }));
   },
 

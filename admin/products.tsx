@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { List, Datagrid, TextField, ImageField } from 'react-admin';
+import { List, Datagrid, TextField, ImageField, RaRecord } from 'react-admin';
 
-export const ProductsList = (props) => {
+export const ProductsList = (props:RaRecord) => {
   return (
     <List {...props}>
       <Datagrid>
